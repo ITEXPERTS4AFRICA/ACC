@@ -288,8 +288,8 @@
         </div>
         <div class="relative">
             <div class="aspect-[4/3] bg-white/5 rounded-sm overflow-hidden">
-                @if(file_exists(public_path('images/sustainability-home.jpg')))
-                <img src="{{ asset('images/sustainability-home.jpg') }}" class="w-full h-full object-cover" alt="Sustainability">
+                @if(file_exists(public_path("images/home/Sustainable Plantation.png")))
+                <img src="{{ asset('images/home/Sustainable Plantation.png') }}" class="w-full h-full object-cover" alt="Sustainability">
                 @else
                 <div class="w-full h-full flex items-center justify-center">
                     <span class="text-white/20 text-6xl">🌿</span>
@@ -318,14 +318,14 @@
             @php $plants = [
                 ['name' => 'Abidjan Plant', 'country' => 'CÔTE D\'IVOIRE', 'cap' => '48,000 MT', 'desc' => app()->getLocale() === 'fr' ? 'Capacité opérationnelle. Desservant le principal port industriel.' : '48,000 MT capacity in operation. Serving the main industrial port.', 'status' => 'operational', 'route' => app()->getLocale().'.factories'],
                 ['name' => 'San Pedro Plant', 'country' => 'CÔTE D\'IVOIRE', 'cap' => '64,000 MT', 'desc' => app()->getLocale() === 'fr' ? 'En cours de construction. Extension de notre hub.' : '64,000 MT currently under construction. Expanding our reach hub.', 'status' => 'construction', 'route' => app()->getLocale().'.factories'],
-                ['name' => 'Cameroon Plant', 'country' => 'KRIBI, CAMEROUN', 'cap' => '48,000 MT', 'desc' => app()->getLocale() === 'fr' ? 'Capacité opérationnelle. Hub stratégique pour l\'Afrique Centrale.' : '48,000 MT capacity in operation. Strategic hub for Central Africa.', 'status' => 'operational', 'route' => app()->getLocale().'.factories'],
+                ['name' => 'Kribi Plant', 'country' => 'KRIBI, CAMEROUN', 'cap' => '48,000 MT', 'desc' => app()->getLocale() === 'fr' ? 'Capacité opérationnelle. Hub stratégique pour l\'Afrique Centrale.' : '48,000 MT capacity in operation. Strategic hub for Central Africa.', 'status' => 'operational', 'route' => app()->getLocale().'.factories'],
             ]; @endphp
 
             @foreach($plants as $plant)
             <div class="border border-gray-200 rounded-sm overflow-hidden hover:shadow-lg transition-shadow group">
                 <div class="h-48 bg-gradient-to-br {{ $plant['status'] === 'construction' ? 'from-amber/20 to-navy/10' : 'from-navy/10 to-slate/10' }} relative overflow-hidden">
-                    @if(file_exists(public_path('images/factories/'.Str::slug($plant['name']).'.jpg')))
-                    <img src="{{ asset('images/factories/'.Str::slug($plant['name']).'.jpg') }}"
+                    @if(file_exists(public_path("images/home/".Str::slug($plant['name']).".jpg")))
+                    <img src="{{ asset("images/home/".Str::slug($plant['name']).".jpg") }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{ $plant['name'] }}">
                     @else
                     <div class="w-full h-full flex items-center justify-center"><span class="text-4xl opacity-20">🏭</span></div>
