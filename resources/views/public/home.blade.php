@@ -101,7 +101,7 @@
 
             {{-- Grande carte gauche --}}
             @php $a = $homeCard1; @endphp
-            <a href="{{ $a ? route(app()->getLocale().'.news.show', $a->slug) : route(app()->getLocale().'.news') }}"
+            <a href="{{ $a ? route(app()->getLocale().'.news.detail', $a->slug) : route(app()->getLocale().'.news') }}"
                class="block border border-gray-200 rounded-sm overflow-hidden group hover:shadow-md transition-shadow">
                 <div class="aspect-[16/10] bg-gray-100 overflow-hidden">
                     @if($a?->image)
@@ -129,7 +129,7 @@
             {{-- Colonne droite : 2 cartes empilées --}}
             <div class="flex flex-col gap-6">
                 @php $b = $homeCard2; @endphp
-                <a href="{{ $b ? route(app()->getLocale().'.news.show', $b->slug) : route(app()->getLocale().'.news') }}"
+                <a href="{{ $b ? route(app()->getLocale().'.news.detail', $b->slug) : route(app()->getLocale().'.news') }}"
                    class="block bg-cream border border-border rounded-sm p-6 hover:shadow-sm transition-shadow group">
                     <span class="section-tag block mb-3">{{ $b?->tag ?? 'Durabilité' }}</span>
                     <h3 class="font-playfair text-lg font-bold text-navy leading-tight mb-2 group-hover:text-amber transition-colors">
@@ -144,7 +144,7 @@
                 </a>
 
                 @php $c = $homeCard3; @endphp
-                <a href="{{ $c ? route(app()->getLocale().'.news.show', $c->slug) : route(app()->getLocale().'.news') }}"
+                <a href="{{ $c ? route(app()->getLocale().'.news.detail', $c->slug) : route(app()->getLocale().'.news') }}"
                    class="block bg-white border border-gray-200 rounded-sm p-6 hover:shadow-sm transition-shadow group">
                     <div class="flex items-start gap-4">
                         <div class="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center flex-shrink-0 text-lg">🤝</div>
@@ -168,7 +168,7 @@
             @foreach($homePlaceholders as $i => $ph)
             @php $art = $homeBottomCards->get($i); @endphp
             @if($art)
-            <a href="{{ route(app()->getLocale().'.news.show', $art->slug) }}"
+            <a href="{{ route(app()->getLocale().'.news.detail', $art->slug) }}"
                class="border border-gray-200 rounded-sm p-6 hover:shadow-sm transition-shadow group block">
                 <span class="section-tag block mb-3">{{ $art->tag ?? $ph['tag'] }}</span>
                 <h3 class="font-playfair font-bold text-navy text-base leading-tight mb-3 group-hover:text-amber transition-colors">{{ $art->title_locale }}</h3>
