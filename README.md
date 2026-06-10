@@ -38,6 +38,7 @@ composer require laravel/boost --dev
 
 php artisan boost:install
 ```
+<img width="1866" height="2565" alt="image" src="https://github.com/user-attachments/assets/b14d9792-3da0-49cf-a271-ea155a5184af" />
 
 Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
