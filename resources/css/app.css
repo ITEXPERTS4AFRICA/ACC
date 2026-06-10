@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html { font-family: 'Inter', sans-serif; color: #2C1A0E; background-color: #FDFAF6; }
+    h1, h2 { font-family: 'Playfair Display', serif; }
+    h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+}
+
+@layer components {
+    /* Bouton principal — bordeaux */
+    .btn-primary {
+        @apply bg-bordeaux text-white uppercase tracking-widest text-sm font-semibold px-8 py-3 rounded-sm hover:bg-chocolate transition-colors duration-200 inline-block;
+    }
+    /* Bouton "Contact Sales" — navy */
+    .btn-navy {
+        @apply bg-navy text-white uppercase tracking-widest text-xs font-bold px-5 py-2.5 rounded-sm hover:bg-navy-dark transition-colors duration-200 inline-block;
+    }
+    /* Bouton secondaire — bordure */
+    .btn-secondary {
+        @apply border border-current uppercase tracking-widest text-sm font-semibold px-8 py-3 rounded-sm hover:bg-white/10 transition-colors duration-200 bg-transparent inline-block;
+    }
+    /* Bouton outline sombre */
+    .btn-outline {
+        @apply border border-navy text-navy uppercase tracking-widest text-xs font-bold px-6 py-2.5 rounded-sm hover:bg-navy hover:text-white transition-colors duration-200 inline-block;
+    }
+    .card-accent { @apply border-l-4 border-bordeaux; }
+    .section-cream { @apply bg-cream; }
+    .section-surface { @apply bg-surface; }
+    .section-dark { @apply bg-dark text-white; }
+    .section-slate { @apply bg-slate text-white; }
+    .nav-link {
+        @apply text-sm font-medium tracking-wide hover:text-navy transition-colors duration-200;
+    }
+    /* Tag de section (ex: "GLOBAL INDUSTRIAL SUPPLY") */
+    .section-tag {
+        @apply text-[10px] uppercase tracking-[4px] font-bold text-amber;
+    }
+    /* Badge statut */
+    .badge-operational { @apply bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wide; }
+    .badge-construction { @apply bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wide; }
+    .badge-active       { @apply bg-navy/10 text-navy text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wide; }
+}
