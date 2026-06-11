@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="py-16 bg-white border-b border-gray-100">
+<section class="py-16 bg-cover border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
             <p class="section-tag mb-3">{{ app()->getLocale() === 'fr' ? 'Connecter l\'Excellence' : 'Connect Excellence' }}</p>
@@ -17,8 +17,8 @@
                     : "Our commercial and technical team is available to answer your supply questions, certification needs, and quote requests." }}
             </p>
         </div>
-        <div class="hidden lg:block aspect-[4/3] rounded-sm bg-surface overflow-hidden flex items-center justify-center">
-            <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">🌍</div>
+        <div class="hidden lg:block aspect-[4/3] rounded-sm bg-surface overflow-hidden md:flex items-center justify-center">
+            <img src="{{ asset('images/contact/hero-contact.png') }}" alt="Contact ACC" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
@@ -33,12 +33,14 @@
         </div>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['tag'=>app()->getLocale()==='fr'?'Siège Social':'Headquarters','city'=>'Abidjan','country'=>app()->getLocale()==='fr'?'Côte d\'Ivoire':'Côte d\'Ivoire','role'=>app()->getLocale()==='fr'?'Siège & Direction Générale':'HQ & Executive Management','addr'=>app()->getLocale()==='fr'?'Zone Industrielle de Vridi':'Vridi Industrial Zone','icon'=>'🏛️'],
-                ['tag'=>app()->getLocale()==='fr'?'Pôle Logistique':'Logistics Hub','city'=>'San Pedro','country'=>app()->getLocale()==='fr'?'Côte d\'Ivoire':'Côte d\'Ivoire','role'=>app()->getLocale()==='fr'?'Logistique & Export':'Logistics & Export','addr'=>app()->getLocale()==='fr'?'Port Autonome de San Pedro':'San Pedro Autonomous Port','icon'=>'⚓'],
-                ['tag'=>app()->getLocale()==='fr'?'Expansion CEMAC':'CEMAC Expansion','city'=>'Kribi','country'=>'Cameroun','role'=>app()->getLocale()==='fr'?'Opérations CEMAC':'CEMAC Operations','addr'=>app()->getLocale()==='fr'?'Zone Industrielle de Kribi':'Kribi Industrial Zone','icon'=>'🏗️'],
+                ['tag'=>app()->getLocale()==='fr'?'Siège Social':'Headquarters','city'=>'Abidjan','country'=>app()->getLocale()==='fr'?'Côte d\'Ivoire':'Côte d\'Ivoire','role'=>app()->getLocale()==='fr'?'Siège & Direction Générale':'HQ & Executive Management','addr'=>app()->getLocale()==='fr'?'Zone Industrielle de Vridi':'Vridi Industrial Zone','img'=>"images/contact/office-abidjan.png"],
+                ['tag'=>app()->getLocale()==='fr'?'Pôle Logistique':'Logistics Hub','city'=>'San Pedro','country'=>app()->getLocale()==='fr'?'Côte d\'Ivoire':'Côte d\'Ivoire','role'=>app()->getLocale()==='fr'?'Logistique & Export':'Logistics & Export','addr'=>app()->getLocale()==='fr'?'Port Autonome de San Pedro':'San Pedro Autonomous Port','img'=>"images/contact/office-san-pedro.png"],
+                ['tag'=>app()->getLocale()==='fr'?'Expansion CEMAC':'CEMAC Expansion','city'=>'Kribi','country'=>'Cameroun','role'=>app()->getLocale()==='fr'?'Opérations CEMAC':'CEMAC Operations','addr'=>app()->getLocale()==='fr'?'Zone Industrielle de Kribi':'Kribi Industrial Zone','img'=>"images/contact/office-kribi.png"],
             ] as $office)
             <div class="bg-white border border-gray-200 rounded-sm overflow-hidden">
-                <div class="aspect-video bg-gray-50 flex items-center justify-center text-5xl opacity-30">{{ $office['icon'] }}</div>
+                <div class="aspect-video bg-gray-50 flex items-center justify-center">
+                    <img src="{{ asset($office['img']) }}" alt="{{ $office['city'] }}" class="w-full h-full object-cover">
+                </div>
                 <div class="p-6">
                     <span class="section-tag block mb-2">{{ $office['tag'] }}</span>
                     <h3 class="font-playfair font-bold text-navy text-xl mb-1">{{ $office['city'] }}</h3>

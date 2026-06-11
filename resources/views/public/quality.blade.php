@@ -3,6 +3,28 @@
 
 @section('content')
 
+{{-- HERO --}}
+<section class="relative h-[460px] flex items-end bg-dark overflow-hidden" style="background-image: url('{{ asset("images/quality/hero-quality.png") }}')">
+    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/10"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full ">
+        <p class="section-tag mb-3">Global Standards</p>
+        <h1 class="font-playfair text-5xl font-bold text-white leading-tight max-w-3xl">
+            {{ app()->getLocale() === 'fr' ? 'Excellence et Conformité' : 'Excellence and Compliance' }}
+        </h1>
+        <p class="text-white/60 text-sm mt-4 max-w-2xl leading-relaxed">
+            {{ app()->getLocale() === 'fr'
+                ? "Notre Système de Management Intégré de la Qualité garantit que chaque gramme de cacao livré répond aux standards internationaux — engagement envers la sécurité, la pureté et l'approvisionnement éthique."
+                : "Our Integrated Quality Management System ensures that every gram of cocoa meeting the international trade market standards is a testament to our commitment to safety, purity, and ethical sourcing." }}
+        </p>
+    </div>
+</section>
+
+{{-- CERTIFIÉ POUR LA LOGISTIQUE GLOBALE --}}
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-12">
+            <h2 class="font-playfair text-3xl font-bold text-navy mb-2">{{ app()->getLocale() === 'fr' ? 'Certifié pour la Logistique Mondiale' : 'Certified for Global Logistics' }}</h2>
+            <p class="text-gray-500 text-sm">{{ app()->getLocale() === 'fr' ? 'Nous adhérons aux standards les plus rigoureux de sécurité alimentaire et d\'éthique du travail.' : 'We adhere to the world\'s most rigorous food safety and ethical labor standards to provide institutional partners with total transparency.' }}</p>
     {{-- HERO --}}
     <section class="relative h-[460px] flex items-end bg-dark overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/10"></div>
@@ -87,6 +109,9 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="flex items-center justify-center">
+                    <img src="{{ asset('images/quality/sedex-logo.png') }}" alt="SEDEX Logo" class="h-full object-cover">
+                </div>
 
                 {{-- EUDR --}}
                 <div class="border border-gray-200 rounded-sm p-6 bg-navy/2">
@@ -164,6 +189,13 @@
                     Download All (ZIP)
                 </a>
             </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+            <div class="aspect-[3/4] bg-gray-100 rounded-sm overflow-hidden"> <img src="{{ asset('images/quality/laboratory-1.png') }}" alt="Laboratory Image" class="w-full h-full object-cover"> </div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-sm overflow-hidden mt-6"> <img src="{{ asset('images/quality/laboratory-2.png') }}" alt="Laboratory Image" class="w-full h-full object-cover"> </div>
+        </div>
+    </div>
+</section>
 
             <div class="border border-gray-200 rounded-sm overflow-hidden">
                 <table class="w-full text-sm">
