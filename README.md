@@ -42,6 +42,23 @@ php artisan boost:install
 
 Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
+## Deployment on Ubuntu
+
+For detailed instructions on deploying this application to an Ubuntu server, please refer to the [Deployment Workflow](.agent/workflows/deploy-ubuntu.md).
+
+### System Preparation
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y php8.2-fpm php8.2-mysql php8.2-xml php8.2-curl php8.2-mbstring php8.2-zip php8.2-gd php8.2-bcmath php8.2-intl unzip nginx mysql-server nodejs npm
+```
+
+### Quick Summary
+1.  **System**: PHP 8.2+, Nginx, MySQL, Node.js
+2.  **Install**: `composer install --no-dev`, `npm install && npm run build`
+3.  **Config**: Set `.env` and run `php artisan migrate --seed`
+4.  **Permissions**: Grant `www-data` ownership of `storage/` and `bootstrap/cache/`
+5.  **Web Server**: Configure Nginx pointing to the `public/` directory
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
