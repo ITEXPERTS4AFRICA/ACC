@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[460px] flex items-end bg-dark overflow-hidden">
+<section class="relative h-[460px] flex items-end bg-cover overflow-hidden" style="background-image: url('{{ asset("images/sustainability/hero-sustainability.png") }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-dark/20"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full">
         <p class="section-tag mb-3">Corporate Responsibility</p>

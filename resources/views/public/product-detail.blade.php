@@ -2,19 +2,15 @@
 
 @section('content')
 
-    <section class="bg-dark py-32">
-        <div class="max-w-7xl mx-auto px-6">
-            <a href="{{ route(app()->getLocale() . '.products') }}"
-                class="text-white/50 text-sm hover:text-white mb-6 inline-flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                {{ app()->getLocale() === 'fr' ? 'Tous les produits' : 'All products' }}
-            </a>
-            <h1 class="font-playfair text-5xl font-bold text-white max-w-2xl leading-tight mt-4">{{ $product->name_locale }}
-            </h1>
-        </div>
-    </section>
+<section class="bg-cover py-32" style="background-image: url('{{ asset("images/products/hero-products.png") }}')">
+    <div class="max-w-7xl mx-auto px-6">
+        <a href="{{ route(app()->getLocale().'.products') }}" class="text-white/50 text-sm hover:text-white mb-6 inline-flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            {{ app()->getLocale() === 'fr' ? 'Tous les produits' : 'All products' }}
+        </a>
+        <h1 class="font-playfair text-5xl font-bold text-white max-w-2xl leading-tight mt-4">{{ $product->name_locale }}</h1>
+    </div>
+</section>
 
     <section class="section-cream py-24">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
