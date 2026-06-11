@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="py-16 bg-cover border-b border-gray-100" style="background-image: url('{{page ? asset("storage/".$page['cantat']->hero_image) : asset('images/contact/hero-contact.png')}}')">
+<section class="py-16 bg-cover border-b border-gray-100 bg-center" style="background-image: url('{{$page['contact']->hero_image ? asset("storage/".$page['cantat']->hero_image) : asset('images/contact/hero-contact.png')}}')">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
             <p class="section-tag mb-3">{{ app()->getLocale() === 'fr' ? 'Connecter l\'Excellence' : 'Connect Excellence' }}</p>
@@ -17,9 +17,7 @@
                     : "Our commercial and technical team is available to answer your supply questions, certification needs, and quote requests." }}
             </p>
         </div>
-        <div class="hidden lg:block aspect-[4/3] rounded-sm bg-surface overflow-hidden md:flex items-center justify-center">
-            <img src="{{ asset('images/contact/hero-contact.png') }}" alt="Contact ACC" class="w-full h-full object-cover">
-        </div>
+        <div class="hidden lg:block aspect-[3/3] rounded-sm bg-surface overflow-hidden md:flex items-center justify-center bg-cover bg-center" style="background:url('{{asset('images/contact/img-cacao.png')}}')"/>
     </div>
 </section>
 

@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[460px] flex items-end bg-dark overflow-hidden" style="background-image: url('{{ $page ? asset("storage/".$page['quality']->hero_image) : asset("images/quality/hero-quality.png") }}')">
+<section class="relative h-[460px] flex items-end bg-center bg-cover overflow-hidden" style="background-image: url('{{ $page['quality']->hero_image ? asset("storage/".$page['quality']->hero_image) : asset("images/quality/hero-quality.png") }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/10"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full ">
         <p class="section-tag mb-3">Global Standards</p>

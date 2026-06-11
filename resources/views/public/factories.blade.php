@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[480px] flex items-end bg-cover bg-center overflow-hidden" style="background-image: url('{{   asset("storage/".$page['factories']->hero_image) &&  asset('images/factories/hero-factories') }}')">
+<section class="relative h-[480px] flex items-end bg-cover bg-center overflow-hidden" style="background-image:url('{{ $page['factories']->hero_image ?? asset('images/factories/hero-factories.png') }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/20"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full grid lg:grid-cols-2 gap-12 items-end">
         <div>
