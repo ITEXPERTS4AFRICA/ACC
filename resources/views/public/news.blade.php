@@ -12,13 +12,13 @@
 @endphp
 
 {{-- ═══════════════ HERO ARTICLE VEDETTE ═══════════════ --}}
-<section class="relative h-[480px] overflow-hidden bg-dark flex items-center">
+<section class="relative h-[480px] overflow-hidden bg-dark flex items-center justify-center">
     {{-- Image de fond --}}
     @if($featured?->image)
     <img src="{{ asset('storage/'.$featured->image) }}" alt=""
-         class="absolute inset-0 w-full h-full object-cover opacity-60">
+         class="absolute inset-0 w-full h-full object-cover object-center opacity-60">
     @else
-    <div class="absolute inset-0 bg-gradient-to-br from-slate via-dark to-chocolate opacity-90"></div>
+    <img src="{{ asset('images/news/hero-news.png') }}" alt="news " class="absolute inset-0 w-full h-full object-cover opacity-60">
     @endif
     <div class="absolute inset-0 bg-dark/40"></div>
 
@@ -80,7 +80,7 @@
                     <img src="{{ asset('storage/'.$a->image) }}" alt="{{ $a->title_locale }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @else
-                    <div class="w-full h-full bg-gradient-to-br from-slate to-dark flex items-center justify-center text-5xl opacity-20">📊</div>
+                    <img src="{{ asset('images/news/card-news-1.png') }}" alt="news card" class="w-full h-full object-cover">
                     @endif
                 </div>
                 <div class="p-6">
@@ -205,7 +205,7 @@
 
         {{-- Droite : image kit --}}
         <div class="relative rounded-sm overflow-hidden aspect-[4/3] bg-dark/40">
-            <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 opacity-20 text-white text-6xl">📷</div>
+            <img src="{{ asset('images/news/kit-news.png') }}" alt="news kit" class="w-full h-full object-cover">
             {{-- Barre bas de l'image --}}
             <div class="absolute bottom-0 inset-x-0 bg-dark/70 flex items-center justify-between px-5 py-3">
                 <div class="flex items-center gap-2 text-white text-xs">

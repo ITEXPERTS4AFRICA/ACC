@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[480px] flex items-end bg-dark overflow-hidden">
+<section class="relative h-[480px] flex items-end bg-cover bg-center overflow-hidden" style="background-image: url('{{ asset("images/factories/hero-factories.png") }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/20"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full grid lg:grid-cols-2 gap-12 items-end">
         <div>
@@ -62,8 +62,8 @@
             </div>
             <div class="relative rounded-sm overflow-hidden">
                 <div class="aspect-[4/3] bg-gradient-to-br from-navy/20 to-slate/20">
-                    @if(file_exists(public_path('images/factories/abidjan.jpg')))
-                    <img src="{{ asset('images/factories/abidjan.jpg') }}" class="w-full h-full object-cover" alt="Abidjan Plant">
+                    @if(file_exists(public_path('images/home/Abidjan-Plant.png')))
+                    <img src="{{ asset("images/home/Abidjan-Plant.png") }}" class="w-full h-full object-cover" alt="Abidjan Plant">
                     @else
                     <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">🏭</div>
                     @endif
@@ -83,15 +83,15 @@
         <div class="grid lg:grid-cols-2 gap-16 items-start">
             <div class="grid grid-cols-2 gap-3 order-last lg:order-first">
                 <div class="aspect-square bg-gradient-to-br from-navy/10 to-slate/10 rounded-sm overflow-hidden">
-                    @if(file_exists(public_path('images/factories/kribi-1.jpg')))
-                    <img src="{{ asset('images/factories/kribi-1.jpg') }}" class="w-full h-full object-cover" alt="Kribi">
+                    @if(file_exists(public_path('images/factories/kribi-1.png')))
+                    <img src="{{ asset('images/factories/kribi-1.png') }}" class="w-full h-full object-cover" alt="Kribi">
                     @else
                     <div class="w-full h-full flex items-center justify-center text-4xl opacity-20">⚙️</div>
                     @endif
                 </div>
                 <div class="aspect-square bg-gradient-to-br from-chocolate/10 to-navy/10 rounded-sm overflow-hidden">
-                    @if(file_exists(public_path('images/factories/kribi-2.jpg')))
-                    <img src="{{ asset('images/factories/kribi-2.jpg') }}" class="w-full h-full object-cover" alt="Kribi">
+                    @if(file_exists(public_path('images/factories/kribi-2.png')))
+                    <img src="{{ asset('images/factories/kribi-2.png') }}" class="w-full h-full object-cover" alt="Kribi">
                     @else
                     <div class="w-full h-full flex items-center justify-center text-4xl opacity-20">🏗️</div>
                     @endif
@@ -161,8 +161,8 @@
                 </p>
             </div>
             <div class="aspect-[4/3] bg-gradient-to-br from-amber/20 to-navy/10 rounded-sm overflow-hidden">
-                @if(file_exists(public_path('images/factories/san-pedro.jpg')))
-                <img src="{{ asset('images/factories/san-pedro.jpg') }}" class="w-full h-full object-cover" alt="San Pedro">
+                @if(file_exists(public_path('images/factories/san-pedro.png')))
+                <img src="{{ asset('images/factories/san-pedro.png') }}" class="w-full h-full object-cover" alt="San Pedro">
                 @else
                 <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">🏗️</div>
                 @endif

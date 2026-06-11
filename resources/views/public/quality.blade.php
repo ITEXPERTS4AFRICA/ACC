@@ -4,9 +4,9 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[460px] flex items-end bg-dark overflow-hidden">
+<section class="relative h-[460px] flex items-end bg-dark overflow-hidden" style="background-image: url('{{ asset("images/quality/hero-quality.png") }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/10"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full ">
         <p class="section-tag mb-3">Global Standards</p>
         <h1 class="font-playfair text-5xl font-bold text-white leading-tight max-w-3xl">
             {{ app()->getLocale() === 'fr' ? 'Excellence et Conformité' : 'Excellence and Compliance' }}
@@ -56,8 +56,8 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="rounded-sm overflow-hidden bg-gray-50 flex items-center justify-center">
-                    <span class="text-5xl opacity-20">🌿</span>
+                <div class="flex items-center justify-center">
+                    <img src="{{ asset('images/quality/sedex-logo.png') }}" alt="SEDEX Logo" class="h-full object-cover">
                 </div>
             </div>
 
@@ -115,8 +115,8 @@
             </div>
         </div>
         <div class="grid grid-cols-2 gap-3">
-            <div class="aspect-[3/4] bg-gray-100 rounded-sm overflow-hidden"><div class="w-full h-full flex items-center justify-center text-5xl opacity-20">🔬</div></div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-sm overflow-hidden mt-6"><div class="w-full h-full flex items-center justify-center text-5xl opacity-20">🧪</div></div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-sm overflow-hidden"> <img src="{{ asset('images/quality/laboratory-1.png') }}" alt="Laboratory Image" class="w-full h-full object-cover"> </div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-sm overflow-hidden mt-6"> <img src="{{ asset('images/quality/laboratory-2.png') }}" alt="Laboratory Image" class="w-full h-full object-cover"> </div>
         </div>
     </div>
 </section>

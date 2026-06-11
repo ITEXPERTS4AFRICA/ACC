@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[460px] flex items-end bg-dark overflow-hidden">
+<section class="relative h-[460px] flex items-end bg-cover overflow-hidden" style="background-image: url('{{ asset("images/sustainability/hero-sustainability.png") }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/60 to-dark/20"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full">
         <p class="section-tag mb-3">Corporate Responsibility</p>
@@ -95,10 +95,21 @@
                 @endforeach
             </div>
         </div>
+        @php
+        $partners = [
+            ['name'=>'Rainforest Alliance','logo'=>'rainforest-alliance.png'],
+            ['name'=>'IDH Sustainable Trade Initiative','logo'=>'idh.png'],
+            ['name'=>'Fairtrade International','logo'=>'fairtrade.png'],
+            ['name'=>'UTZ Certified','logo'=>'utz.png'],
+        ];
+        
+        @endphp
         <div class="grid grid-cols-2 gap-4">
-            @for($i = 0; $i < 4; $i++)
-            <div class="aspect-square rounded-sm bg-white border border-gray-200 flex items-center justify-center text-5xl opacity-30">🌿</div>
-            @endfor
+            @foreach($partners as $p)
+            <div class="bg-white border aspect-[4/3] h-full border-gray-200 rounded-sm p-6 flex items-center justify-center">
+                <img src="{{ asset('images/sustainability/'.$p['logo']) }}" class="h-full object-cover object-center" alt="{{ $p['name'] }}"/>
+            </div>
+            @endforeach
         </div>
     </div>
 </section>

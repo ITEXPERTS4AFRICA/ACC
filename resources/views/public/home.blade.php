@@ -108,7 +108,7 @@
                     <img src="{{ asset('storage/'.$a->image) }}" alt="{{ $a->title_locale }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @else
-                    <div class="w-full h-full bg-gradient-to-br from-slate to-dark flex items-center justify-center text-5xl opacity-20">📊</div>
+                    <img src="{{ asset("images/news/image 4.png") }}" alt="News Image Placeholder" class="w-full h-full object-cover opacity-50">       
                     @endif
                 </div>
                 <div class="p-6">
@@ -324,8 +324,8 @@
             @foreach($plants as $plant)
             <div class="border border-gray-200 rounded-sm overflow-hidden hover:shadow-lg transition-shadow group">
                 <div class="h-48 bg-gradient-to-br {{ $plant['status'] === 'construction' ? 'from-amber/20 to-navy/10' : 'from-navy/10 to-slate/10' }} relative overflow-hidden">
-                    @if(file_exists(public_path("images/home/".Str::slug($plant['name']).".jpg")))
-                    <img src="{{ asset("images/home/".Str::slug($plant['name']).".jpg") }}"
+                    @if(file_exists(public_path("images/home/".Str::slug($plant['name']).".png")))
+                    <img src="{{ asset("images/home/".Str::slug($plant['name']).".png") }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{ $plant['name'] }}">
                     @else
                     <div class="w-full h-full flex items-center justify-center"><span class="text-4xl opacity-20">🏭</span></div>
