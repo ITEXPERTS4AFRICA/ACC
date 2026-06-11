@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="py-16 bg-cover border-b border-gray-100" style="background-image: url('{{page ? asset("storage/".$page['cantat']->hero_image) : asset('images/contact/hero-contact.png')}}')">
+<section class="py-16 bg-cover border-b border-gray-100" style="background-image: url('{{ asset('images/contact/hero-contact.png') }}')">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
             <p class="section-tag mb-3">{{ app()->getLocale() === 'fr' ? 'Connecter l\'Excellence' : 'Connect Excellence' }}</p>

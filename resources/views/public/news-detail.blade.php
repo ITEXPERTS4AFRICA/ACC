@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-cover bg-center py-32" style="background-image:url('{{ $page ? asset("storage/".$page['news']->hero_image) : asset('images/news/card-news-1.png') }}')" >
+<section class="bg-cover bg-center py-32" style="background-image:url('{{ $article->image ? asset('storage/'.$article->image) : asset('images/news/hero-news.png') }}')" >
     <div class="max-w-7xl mx-auto px-6">
         <a href="{{ route(app()->getLocale().'.news') }}" class="text-white/50 text-sm hover:text-white mb-6 inline-flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
