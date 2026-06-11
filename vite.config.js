@@ -12,5 +12,10 @@ export default defineConfig({
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },
+        host: '0.0.0.0',        // écoute sur toutes les interfaces
+        port: 5173,
+        hmr: {
+            host: '54.38.146.214',  // ton IP publique
+        },
     },
 });
