@@ -41,4 +41,25 @@
     .badge-operational { @apply bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wide; }
     .badge-construction { @apply bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wide; }
     .badge-active       { @apply bg-navy/10 text-navy text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wide; }
+
+    /* Skeleton Loading Placeholder */
+    .skeleton {
+        @apply relative overflow-hidden bg-gray-200/50;
+    }
+    .skeleton::after {
+        content: "";
+        @apply absolute inset-0;
+        background-image: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        animation: shimmer 1.8s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
 }

@@ -50,6 +50,52 @@ For detailed instructions on deploying this application to an Ubuntu server, ple
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y php8.2-fpm php8.2-mysql php8.2-xml php8.2-curl php8.2-mbstring php8.2-zip php8.2-gd php8.2-bcmath php8.2-intl unzip nginx mysql-server nodejs npm
+
+sudo apt install php-sqlite3 -y
+# Créer le dossier manquant
+mkdir -p storage/app/public/pdfs
+
+# Créer un fichier PDF factice pour débloquer le seeder
+touch storage/app/public/pdfs/csr-report-2024.pdf
+mkdir -p storage/app/public/pdfs
+mkdir -p storage/app/public/images
+mkdir -p storage/app/public/documents
+
+# Créer les fichiers manquants listés
+touch storage/app/public/pdfs/csr-report-2024.pdf
+
+# Lien symbolique public/storage
+php artisan storage:link
+npm run build
+# Vider le cache config
+php artisan config:clear
+
+# Démarrer le serveur
+php artisan serve
+# Relancer uniquement le seeder
+php artisan db:seed
+# Vérifier
+php -m | grep sqlite
+
+# Activer UFW
+sudo ufw enable
+
+# Ports essentiels
+sudo ufw allow 22        # SSH
+sudo ufw allow 80        # HTTP
+sudo ufw allow 443       # HTTPS
+sudo ufw allow 3306      # MySQL (si accès distant BDD)
+sudo ufw allow 6379      # Redis (si utilisé)
+sudo ufw allow 9000      # PHP-FPM (si besoin)
+# UFW
+sudo ufw allow 8000
+sudo ufw reload
+
+# Vérifier
+sudo ufw status
+
+# Vérifier
+sudo ufw status verbose
 ```
 
 ### Quick Summary
