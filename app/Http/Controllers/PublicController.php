@@ -56,8 +56,9 @@ class PublicController extends Controller
     public function sustainability(): View
     {
         $pillars = RsePillar::ordered()->get();
+        $partners = Partner::active()->get();
         $seo = SeoSetting::forPage('sustainability');
-        return view('public.sustainability', compact('pillars', 'seo'));
+        return view('public.sustainability', compact('pillars', 'seo', 'partners'));
     }
 
     public function news(): View
@@ -86,6 +87,13 @@ class PublicController extends Controller
     {
         $seo = SeoSetting::forPage('contact');
         return view('public.contact', compact('seo'));
+    }
+
+    public function dynamicPage(string $key): View
+    {
+        $page = \App\Models\Page::where('key', $key)->where('status', 'published')->firstOrFail();
+        $seo = \App\Models\SeoSetting::forPage('page.' . $key); // Check for specific SEO or use page defaults
+        return view('public.page', compact('page', 'seo'));
     }
 
     public function setLocale(string $locale)

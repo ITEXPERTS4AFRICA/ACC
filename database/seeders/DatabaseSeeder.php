@@ -7,6 +7,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->call([AccSeeder::class, PagesAndSettingsSeeder::class]);
+        $this->call([
+            PagesAndSettingsSeeder::class,
+            AccSeeder::class,
+            CocoaIntelligenceSeeder::class,
+            CorporateIntelligenceSeeder::class,
+        ]);
     }
 }

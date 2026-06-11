@@ -29,9 +29,30 @@
         </div>
         <div class="grid md:grid-cols-3 gap-8">
             @foreach([
-                ['icon'=>'🌱','tag'=>'Pillar 01','title'=>app()->getLocale()==='fr'?'Approvisionnement Éthique':'Ethical Sourcing','items'=>app()->getLocale()==='fr'?['Traçabilité parcelle par parcelle','Primes de durabilité versées aux coopératives','Interdiction totale de la déforestation','Audit terrain annuel par tierce partie']:['Plot-by-plot traceability','Sustainability premiums paid to cooperatives','Zero deforestation commitment','Annual third-party field audits']],
-                ['icon'=>'🌍','tag'=>'Pillar 02','title'=>app()->getLocale()==='fr'?'Protection Environnementale':'Environmental Protection','items'=>app()->getLocale()==='fr'?['Réduction des émissions de CO₂ de 32%','Zéro rejet liquide dans les cours d\'eau','Gestion ISO 14001 certifiée','Projets de reboisement actifs']:['32% CO₂ emission reduction','Zero liquid discharge into waterways','ISO 14001 certified management','Active reforestation projects']],
-                ['icon'=>'🤝','tag'=>'Pillar 03','title'=>app()->getLocale()==='fr'?'Développement Communautaire':'Community Development','items'=>app()->getLocale()==='fr'?['5 écoles construites au Cameroun et en CI','15 000+ agriculteurs formés et certifiés','Programmes d\'alphabétisation adulte','Accès aux soins de santé primaires']:['5 schools built in Cameroon & Côte d\'Ivoire','15,000+ farmers trained and certified','Adult literacy programs','Access to primary healthcare']],
+                [
+                    'icon'=>'🌱',
+                    'tag'=>'Pillar 01',
+                    'title'=>app()->getLocale()==='fr'?'Approvisionnement Éthique':'Ethical Sourcing',
+                    'items'=>app()->getLocale()==='fr'
+                        ? ['Traçabilité parcelle par parcelle', 'Primes de durabilité versées aux coopératives', 'Engagement zéro déforestation', 'Audits terrain annuels par tierce partie']
+                        : ['Plot-by-plot traceability', 'Sustainability premiums paid to cooperatives', 'Zero deforestation commitment', 'Annual third-party field audits']
+                ],
+                [
+                    'icon'=>'🌍',
+                    'tag'=>'Pillar 02',
+                    'title'=>app()->getLocale()==='fr'?'Protection Environnementale':'Environmental Protection',
+                    'items'=>app()->getLocale()==='fr'
+                        ? ['Réduction des émissions de CO₂ de 32%', 'Zéro rejet liquide dans les cours d\'eau', 'Gestion certifiée ISO 14001', 'Projets de reboisement actifs']
+                        : ['32% CO₂ emission reduction', 'Zero liquid discharge into waterways', 'ISO 14001 certified management', 'Active reforestation projects']
+                ],
+                [
+                    'icon'=>'🤝',
+                    'tag'=>'Pillar 03',
+                    'title'=>app()->getLocale()==='fr'?'Développement Communautaire':'Community Development',
+                    'items'=>app()->getLocale()==='fr'
+                        ? ['5 écoles construites au Cameroun & Côte d\'Ivoire', '15 000+ agriculteurs formés et certifiés', 'Programmes d\'alphabétisation pour adultes', 'Accès aux soins de santé primaires']
+                        : ['5 schools built in Cameroon & Côte d\'Ivoire', '15,000+ farmers trained and certified', 'Adult literacy programs', 'Access to primary healthcare']
+                ],
             ] as $p)
             <div class="border border-gray-200 rounded-sm p-8 hover:shadow-md transition-shadow">
                 <div class="text-4xl mb-4">{{ $p['icon'] }}</div>
@@ -77,7 +98,7 @@
 </section>
 
 {{-- PARTENARIATS --}}
-<section class="py-20 bg-surface">
+<section class="py-20 bg-surface" id="partnerships">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div>
             <p class="section-tag mb-3">{{ app()->getLocale() === 'fr' ? 'Partenariats pour le changement' : 'Partnerships for Change' }}</p>
@@ -95,10 +116,16 @@
                 @endforeach
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-            @for($i = 0; $i < 4; $i++)
-            <div class="aspect-square rounded-sm bg-white border border-gray-200 flex items-center justify-center text-5xl opacity-30">🌿</div>
-            @endfor
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            @foreach($partners as $partner)
+            <div class="aspect-square rounded-sm bg-white border border-gray-100 p-6 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 group">
+                @if($partner->logo)
+                    <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}" class="max-h-full max-w-full object-contain opacity-60 group-hover:opacity-100 transition-opacity">
+                @else
+                    <span class="text-navy/20 font-bold text-center text-[10px] leading-tight uppercase tracking-widest">{{ $partner->name }}</span>
+                @endif
+            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -109,7 +136,8 @@
         <h2 class="font-playfair text-2xl font-bold text-white mb-3">{{ app()->getLocale() === 'fr' ? 'Passer à l\'Étape Suivante' : 'Take the Next Step' }}</h2>
         <p class="text-white/60 text-sm mb-8">{{ app()->getLocale() === 'fr' ? 'Téléchargez notre rapport RSE complet ou contactez notre équipe Durabilité.' : 'Download our full CSR report or contact our Sustainability team.' }}</p>
         <div class="flex flex-wrap gap-4 justify-center">
-            <a href="#" class="bg-amber text-white uppercase tracking-widest text-xs font-bold px-7 py-3 rounded-sm hover:bg-amber/90 transition">
+            @php $csrPath = \App\Models\SiteSetting::get('csr_report_path'); @endphp
+            <a href="{{ $csrPath ? asset('storage/'.$csrPath) : '#' }}" target="_blank" class="bg-amber text-white uppercase tracking-widest text-xs font-bold px-7 py-3 rounded-sm hover:bg-amber/90 transition">
                 {{ app()->getLocale() === 'fr' ? 'Télécharger le Rapport RSE' : 'Download CSR Report' }}
             </a>
             <a href="{{ route(app()->getLocale().'.contact') }}" class="border border-white/40 text-white uppercase tracking-widest text-xs font-bold px-7 py-3 rounded-sm hover:bg-white/10 transition">
