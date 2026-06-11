@@ -57,3 +57,65 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Prérequis et démarrage local
+
+Après le clonage du dépôt, suivre ces étapes pour lancer le projet en local :
+
+1. Installer les dépendances PHP et JavaScript :
+
+```bash
+composer install
+npm install
+```
+
+2. Copier le fichier d'environnement et générer la clé :
+
+```bash
+copy .env.example .env    # Windows
+php artisan key:generate
+```
+
+3. Configuration de la base (SQLite recommandé pour les tests) :
+
+- Pour sqlite : créer le fichier de base de données et mettre à jour .env :
+
+```bash
+mkdir database 2>nul || true
+type nul > database\database.sqlite
+```
+
+Définir dans .env :
+
+DB_CONNECTION=sqlite
+DB_DATABASE=${PWD}\\database\\database.sqlite
+
+4. Lancer les migrations, les seeders et créer le lien de stockage :
+
+```bash
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+```
+
+5. Compiler les assets et lancer l'application :
+
+```bash
+npm run dev
+# si un script composer 'dev' existe
+composer run dev
+```
+
+6. Si le serveur intégré ne démarre pas via l'environnement, tester manuellement :
+
+```bash
+php artisan serve
+npm run dev
+```
+
+Notes :
+- Adaptez les commandes 'copy' selon votre shell (Windows PowerShell vs Bash).
+- Si vous utilisez une base MySQL/Postgres, configurez les variables DB_* dans .env avant `php artisan migrate`.
+- SQLite est recommandé pour les tests locaux car il évite la configuration d'un serveur DB externe.
+
+Bonne découverte et développement !

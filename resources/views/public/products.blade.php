@@ -39,7 +39,7 @@
                     <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name_locale }}"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @else
-                    <div class="w-full h-full flex items-center justify-center text-5xl opacity-20">🍫</div>
+                     <img src="{{ asset("images/home/image 16.png") }}" alt="Placeholder Image" class="w-full h-full object-cover opacity-50">
                     @endif
                 </div>
                 <div class="p-5">
