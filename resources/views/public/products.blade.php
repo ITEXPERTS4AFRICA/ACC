@@ -44,7 +44,7 @@
                 </div>
                 <div class="p-5">
                     <h3 class="font-playfair text-xl font-bold text-navy mb-2">{{ $product->name_locale }}</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">{{ $product->description_locale }}</p>
+                    <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">{!! nl2br(e($product->description_locale)) !!}</p>
                     <span class="inline-flex items-center gap-1 text-navy text-[10px] font-bold uppercase tracking-widest group-hover:text-amber transition">
                         Technical Specs
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>

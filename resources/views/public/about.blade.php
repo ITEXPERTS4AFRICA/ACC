@@ -130,6 +130,25 @@
             <a href="{{ route(app()->getLocale().'.contact') }}" class="btn-navy">{{ app()->getLocale() === 'fr' ? 'Nous Contacter' : 'Contact Us' }}</a>
             <a href="{{ route(app()->getLocale().'.products') }}" class="btn-outline">{{ app()->getLocale() === 'fr' ? 'Consulter nos Produits' : 'View our Products' }}</a>
         </div>
+
+        {{-- Partner Logos Cloud --}}
+        @if(isset($partners) && $partners->count() > 0)
+        <div class="mt-16 pt-12 border-t border-gray-100">
+            <p class="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold mb-8">
+                {{ app()->getLocale() === 'fr' ? 'ILS NOUS FONT CONFIANCE' : 'THEY TRUST US' }}
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                @foreach($partners as $partner)
+                    @if($partner->logo)
+                        <img src="{{ asset('storage/'.$partner->logo) }}" 
+                             alt="{{ $partner->name }}" 
+                             class="h-8 md:h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                             title="{{ $partner->name }}">
+                    @endif
+                @endforeach
+            </div>
+        </div>
+        @endif
     </div>
 </section>
 

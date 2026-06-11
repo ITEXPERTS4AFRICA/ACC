@@ -109,49 +109,82 @@
                 <p class="text-[11px] text-gray-400 uppercase tracking-widest font-semibold mb-4">Cameroon | Integrated Hub</p>
                 <p class="text-gray-600 text-sm leading-relaxed mb-6">
                     {{ app()->getLocale() === 'fr'
-                        ? "Notre installation au Cameroun est un modèle d'industrialisation durable. Intégrée dans le complexe du Port Industriel de Kribi, elle minimise l'empreinte carbone grâce à un approvisionnement local optimisé et des capacités d'export direct."
-                        : "Our Cameroon facility serves as a flagship for sustainable industrialization. Integrated within the Kribi Industrial Port complex, it minimizes carbon footprint through optimized local sourcing and direct export capabilities." }}
+        ? "Des infrastructures industrielles stratégiques à travers l'Afrique de l'Ouest et Centrale. Conçues pour l'efficacité maximale, la qualité irréprochable et l'intégration communautaire durable."
+        : "Explore our strategic industrial footprint across West and Central Africa. Facilities designed for maximum efficiency, uncompromising quality, and sustainable community integration." }}
                 </p>
-                <ul class="space-y-3 mb-8">
-                    @foreach(['ISO 9001:2015 Certified Quality Systems','Closed-loop water recycling system','Real-time production monitoring dashboard'] as $feat)
-                    <li class="flex items-center gap-3 text-sm text-gray-700">
-                        <svg class="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                        {{ $feat }}
-                    </li>
-                    @endforeach
-                </ul>
-                <a href="{{ route(app()->getLocale().'.contact') }}"
-                   class="inline-flex items-center gap-2 text-navy text-xs font-bold uppercase tracking-widest hover:text-amber transition">
-                    View Facility Specs
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                </a>
+            </div>
+            <div class="flex gap-6">
+                @foreach([['160,000 MT', 'Total Planned Capacity'], ['3', 'Strategic Locations']] as $s)
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm px-6 py-4">
+                        <div class="font-playfair text-3xl font-bold text-white">{{ $s[0] }}</div>
+                        <div class="text-white/50 text-[10px] uppercase tracking-widest mt-1">{{ $s[1] }}</div>
+                    </div>
+                @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-{{-- USINE 3 : SAN PEDRO --}}
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="border border-gray-200 rounded-sm p-8">
-                <span class="bg-amber text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm">In Construction</span>
-                <h2 class="font-playfair text-3xl font-bold text-navy mt-5 mb-2">
-                    <a href="{{ route(app()->getLocale().'.factories') }}" class="text-amber hover:underline">San Pedro Expansion</a>
-                </h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                    {{ app()->getLocale() === 'fr'
-                        ? "L'avenir de la transformation du cacao se construit à San Pedro. Avec une capacité projetée de 64 000 MT, cette usine sera notre plus grande et plus technologiquement avancée à ce jour."
-                        : "The future of cocoa processing is being built in San Pedro. With a projected capacity of 64,000 MT, this plant will be our largest and most technologically advanced installation to date." }}
-                </p>
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="bg-surface rounded-sm p-4">
-                        <div class="font-playfair text-2xl font-bold text-navy">64,000 MT</div>
-                        <div class="text-[10px] uppercase tracking-widest text-amber mt-1">Target Capacity</div>
+    {{-- FACTORIES LOOP --}}
+    @foreach($factories as $index => $factory)
+        <section class="py-20 {{ $index % 2 === 1 ? 'bg-surface' : 'bg-white' }}">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="{{ $index % 2 === 1 ? 'order-last lg:order-first' : '' }}">
+                        <p class="section-tag mb-2">{{ $factory->name_locale }}</p>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-semibold mb-4">
+                            {{ $factory->city }}, {{ $factory->country }} | {{ $factory->status_label }}
+                        </p>
+
+                        <div class="prose prose-sm text-gray-600 mb-8 max-w-none">
+                            {!! nl2br(e($factory->description_locale)) !!}
+                        </div>
+
+                        <div class="bg-gray-50 border border-gray-200 rounded-sm px-5 py-4">
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-1">Operational Status
+                            </p>
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="w-2 h-2 rounded-full {{ $factory->status === 'operational' ? 'bg-green-500' : 'bg-amber' }}"></span>
+                                <span
+                                    class="{{ $factory->status === 'operational' ? 'text-green-700' : 'text-amber-700' }} font-bold text-sm">
+                                    {{ $factory->status_label }}
+                                </span>
+                                <span class="ml-auto text-xs text-gray-400 font-mono">0{{ $index + 1 }} |
+                                    {{ substr($factory->country, 0, 2) }}</span>
+                            </div>
+                        </div>
+
+                        @if($factory->status === 'planned' || $factory->status === 'construction')
+                            <div class="mt-6 grid grid-cols-2 gap-4">
+                                <div class="bg-surface rounded-sm p-4">
+                                    <div class="font-playfair text-2xl font-bold text-navy">
+                                        {{ number_format($factory->capacity_mt, 0, ',', ' ') }} MT</div>
+                                    <div class="text-[10px] uppercase tracking-widest text-amber mt-1">Target Capacity</div>
+                                </div>
+                                <div class="bg-surface rounded-sm p-4">
+                                    <div class="font-playfair text-2xl font-bold text-navy">2025</div>
+                                    <div class="text-[10px] uppercase tracking-widest text-amber mt-1">Completion</div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
-                    <div class="bg-surface rounded-sm p-4">
-                        <div class="font-playfair text-2xl font-bold text-navy">2025</div>
-                        <div class="text-[10px] uppercase tracking-widest text-amber mt-1">Expected Completion</div>
+
+                    <div class="relative rounded-sm overflow-hidden">
+                        <div class="aspect-[4/3] bg-gradient-to-br from-navy/20 to-slate/20">
+                            @if($factory->image)
+                                <img src="{{ asset('storage/' . $factory->image) }}" class="w-full h-full object-cover"
+                                    alt="{{ $factory->name_locale }}">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">🏭</div>
+                            @endif
+                        </div>
+                        @if($factory->capacity_mt && $factory->status === 'operational')
+                            <div class="absolute bottom-4 right-4 bg-navy text-white px-4 py-2 rounded-sm shadow-lg">
+                                <div class="text-[10px] uppercase tracking-widest text-white/60">
+                                    {{ number_format($factory->capacity_mt, 0, ',', ' ') }} MT</div>
+                                <div class="font-bold text-sm">Annual Production</div>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <p class="text-gray-500 text-xs leading-relaxed">
@@ -167,26 +200,28 @@
                 <div class="w-full h-full flex items-center justify-center text-6xl opacity-20">🏗️</div>
                 @endif
             </div>
-        </div>
-    </div>
-</section>
+        </section>
+    @endforeach
 
-{{-- CTA --}}
-<section class="bg-slate py-16 text-center">
-    <div class="max-w-2xl mx-auto px-6">
-        <h2 class="font-playfair text-3xl font-bold text-white mb-4">
-            {{ app()->getLocale() === 'fr' ? 'Partner with a Global Cocoa Leader' : 'Partner with a Global Cocoa Leader' }}
-        </h2>
-        <p class="text-white/60 text-sm mb-8">
-            {{ app()->getLocale() === 'fr'
-                ? "Nos installations sont ouvertes aux audits institutionnels et aux visites partenaires."
-                : "Our facilities are open for institutional audits and partner visits. Discover the precision behind every ton of cocoa we process." }}
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-            <a href="{{ route(app()->getLocale().'.contact') }}" class="bg-white text-navy btn-outline border-white">Request Facility Tour</a>
-            <a href="{{ route(app()->getLocale().'.contact') }}" class="border border-white/40 text-white uppercase tracking-widest text-xs font-bold px-7 py-3 rounded-sm hover:bg-white/10 transition">Download Technical Deck</a>
+    {{-- CTA --}}
+    <section class="bg-slate py-16 text-center">
+        <div class="max-w-2xl mx-auto px-6">
+            <h2 class="font-playfair text-3xl font-bold text-white mb-4">
+                {{ app()->getLocale() === 'fr' ? 'Partner with a Global Cocoa Leader' : 'Partner with a Global Cocoa Leader' }}
+            </h2>
+            <p class="text-white/60 text-sm mb-8">
+                {{ app()->getLocale() === 'fr'
+        ? "Nos installations sont ouvertes aux audits institutionnels et aux visites partenaires."
+        : "Our facilities are open for institutional audits and partner visits. Discover the precision behind every ton of cocoa we process." }}
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="{{ route(app()->getLocale() . '.contact') }}"
+                    class="bg-white text-navy btn-outline border-white">Request Facility Tour</a>
+                <a href="{{ route(app()->getLocale() . '.contact') }}"
+                    class="border border-white/40 text-white uppercase tracking-widest text-xs font-bold px-7 py-3 rounded-sm hover:bg-white/10 transition">Download
+                    Technical Deck</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 @endsection
