@@ -11,12 +11,12 @@ class CorporateIntelligenceSeeder extends Seeder
     {
         // 1. Partenaires (Logistique, Banques, Clients Industriels)
         $partners = [
-            ['name' => 'MSC Mediterranean Shipping Company', 'website' => 'https://www.msc.com', 'order' => 1],
-            ['name' => 'Maersk Line', 'website' => 'https://www.maersk.com', 'order' => 2],
-            ['name' => 'CMA CGM', 'website' => 'https://www.cma-cgm.com', 'order' => 3],
+            ['name' => 'MSC Mediterranean Shipping Company', 'logo' => 'partners/aNfkphKxCAuh77UMa08h9m7QU4OFiSTVlTVzUlZj.png', 'website' => 'https://www.msc.com', 'order' => 1],
+            ['name' => 'Maersk Line', 'logo' => 'partners/JMX6pR54iv811R6iIiVdRlxxZ2rXJMl4fUGTltLv.png', 'website' => 'https://www.maersk.com', 'order' => 2],
+            ['name' => 'CMA CGM', 'logo' => 'partners/WIk6DaCQd3nPOMRvizW5HV78HM4HRohos4nj1iL7.png', 'website' => 'https://www.cma-cgm.com', 'order' => 3],
             ['name' => 'Ecobank Transnational Inc.', 'website' => 'https://www.ecobank.com', 'order' => 4],
             ['name' => 'Société Générale Côte d\'Ivoire', 'website' => 'https://www.societegenerale.ci', 'order' => 5],
-            ['name' => 'Barry Callebaut', 'website' => 'https://www.barry-callebaut.com', 'order' => 6],
+            ['name' => 'Barry Callebaut', 'logo' => 'partners/Y6cPjT4KYTv0oNVudptDeTG0j1f3gq16G8RF1rzg.png', 'website' => 'https://www.barry-callebaut.com', 'order' => 6],
             ['name' => 'ICCO - International Cocoa Organization', 'website' => 'https://www.icco.org', 'order' => 7],
         ];
 
