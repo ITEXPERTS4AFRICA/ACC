@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[440px] flex items-end bg-dark overflow-hidden">
+<section class="relative h-[440px] flex items-end bg-cover bg-center" style="background-image: url('{{ $page ? asset("storage/".$page['partners']->hero_image) : asset("images/partners/hero-partners.png") }}')">
     <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/10"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 w-full">
         <p class="section-tag mb-3">Écosystème B2B</p>

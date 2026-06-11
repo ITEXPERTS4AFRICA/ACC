@@ -4,8 +4,8 @@
 @section('content')
 
 {{-- HERO --}}
-<section class="relative h-[400px] flex items-end bg-navy overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"1\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+<section class="relative h-[400px] flex items-end bg-center bg-cover overflow-hidden" style="background-image: url('{{ $page ? asset("storage/".$page['products']->hero_image) : asset("images/products/hero-products.png") }}')">
+    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-dark/10"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 pb-14 w-full">
         <p class="section-tag mb-3">Global Industrial Supply</p>
         <h1 class="font-playfair text-5xl font-bold text-white leading-tight max-w-2xl">
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="aspect-square bg-gradient-to-br from-navy/5 to-navy/10 rounded-sm flex items-center justify-center">
-            <span class="text-[120px] opacity-10">🏆</span>
+            <img src="{{ asset('images/products/production-professional.png') }}" alt="Laboratory Image" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
